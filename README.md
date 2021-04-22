@@ -13,6 +13,8 @@
 | birthday                         | date   | null: false |
 
 
+test
+
 ## items テーブル
 
 | Column             | Type       | Options                         |
