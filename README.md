@@ -15,7 +15,6 @@
 
 has_many :items
 has_many :orders
-belongs_to :purchase
 
 
 
@@ -37,7 +36,6 @@ belongs_to :purchase
 
  belongs_to :user
  has_one :order
- belongs_to :purchase
 
 
 
@@ -64,3 +62,5 @@ belongs_to :order
 
 belongs_to :user
 belongs_to :item
+belongs_to :purchase
+
