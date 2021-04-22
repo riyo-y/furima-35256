@@ -15,7 +15,8 @@
 
 has_many :items
 has_many :orders
-belongs_to :items
+belongs_to :purchase
+
 
 
 
@@ -26,7 +27,7 @@ belongs_to :items
 | --------------------- | ----------- | ------------------------------- |
 | products_name         | string      | null: false                     |
 | price                 | integer     | null: false                     |
-| user                  | references     | null: false foreign_key: true   |
+| user                  | references  | null: false foreign_key: true   |
 | category_id           | integer     | null: false                     |
 | products_states_id    | integer     | null: false                     |
 | shipping_id           | integer     | null: false                     |
@@ -34,30 +35,32 @@ belongs_to :items
 | arrival_date_id       | integer     | null: false                     |
 | comments              | text        | null: false                     |
 
- belongs_to :users
- belongs_to :orders
+ belongs_to :user
+ has_one :order
+ belongs_to :purchase
+
 
 
 ## purchases テーブル
 
 | Column            | Type       | Options                         |
 | ----------------- | ---------- | ------------------------------- |
-| postcode          | string     | null: false                     |  
-| prefecture        | integer    | null: false                     |
+| postcode_id       | string     | null: false                     |  
+| prefecture_id     | integer    | null: false                     |
 | city              | string     | null: false                     |
 | block             | string     | null: false                     |
 | building          | string     |                                 |
 | phone_number      | string     | null: false                     |
-| orders_id         | references     | null: false, foreign_key: true  |
+| order             | references | null: false, foreign_key: true  |
 
-belongs_to :orders
+belongs_to :order
 
 ## ordersテーブル
 
 | Column            | Type       | Options                         |
 | ----------------- | ---------- | ------------------------------- |
-| user_id           | references     | null: false foreign_key: true   |  
-| item_id           | references     | null: false foreign_key: true   |
+| user              | references | null: false foreign_key: true   |  
+| item              | references | null: false foreign_key: true   |
 
-belongs_to :users
-belongs_to :items
+belongs_to :user
+belongs_to :item
