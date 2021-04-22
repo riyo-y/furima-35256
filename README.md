@@ -43,7 +43,7 @@ has_many :orders
 
 | Column            | Type       | Options                         |
 | ----------------- | ---------- | ------------------------------- |
-| postcode_id       | string     | null: false                     |  
+| postcode          | string     | null: false                     |  
 | prefecture_id     | integer    | null: false                     |
 | city              | string     | null: false                     |
 | block             | string     | null: false                     |
@@ -62,5 +62,5 @@ belongs_to :order
 
 belongs_to :user
 belongs_to :item
-belongs_to :purchase
+has_one :purchase
 
