@@ -15,6 +15,8 @@
 
 has_many :items
 has_many :orders
+belongs_to :items
+
 
 
 
@@ -24,7 +26,7 @@ has_many :orders
 | --------------------- | ----------- | ------------------------------- |
 | products_name         | string      | null: false                     |
 | price                 | integer     | null: false                     |
-| user                  | string      | null: false foreign_key: true   |
+| user                  | references     | null: false foreign_key: true   |
 | category_id           | integer     | null: false                     |
 | products_states_id    | integer     | null: false                     |
 | shipping_id           | integer     | null: false                     |
@@ -33,6 +35,7 @@ has_many :orders
 | comments              | text        | null: false                     |
 
  belongs_to :users
+ belongs_to :orders
 
 
 ## purchases テーブル
@@ -45,14 +48,16 @@ has_many :orders
 | block             | string     | null: false                     |
 | building          | string     |                                 |
 | phone_number      | string     | null: false                     |
+| orders_id         | references     | null: false, foreign_key: true  |
 
+belongs_to :orders
 
 ## ordersテーブル
 
 | Column            | Type       | Options                         |
 | ----------------- | ---------- | ------------------------------- |
-| user_id           | string     | null: false foreign_key: true   |  
-| item_id           | string     | null: false foreign_key: true   |
+| user_id           | references     | null: false foreign_key: true   |  
+| item_id           | references     | null: false foreign_key: true   |
 
 belongs_to :users
 belongs_to :items
