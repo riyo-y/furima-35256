@@ -1,48 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column                           | Type   | Options     |
-| -------------------------------- | ------ | ----------- |
-| nickname                         | text   | null: false |
-| email                            | string | null: false |
-| encrypted_password               | string | null: false |
-| encrypted_password(confirmation) | string | null: false |
-| name                             | string | null: false |
-| name(kana)                       | string | null: false |
-| birthday                         | date   | null: false |
+Things you may want to cover:
 
+* Ruby version
 
-## items テーブル
+* System dependencies
 
-| Column             | Type       | Options                         |
-| ------------------ | ---------- | ------------------------------- |
-| products_name      | string     | null: false                     |
-| images	           | text       | null: false                     |
-| price              | string     | null: false                     |
-| admins             | string     | null: false foreign_key: true   |
-| category           | string     | null: false                     |
-| products_states    | string     | null: false                     |
-| shipping           | string     | null: false foreign_key: true   |
-| admins_information | string     | null: false foreign_key: true   |
-| arrival_date       | string     | null: false                     |
-| comments           | text       | null: false                     |
+* Configuration
 
+* Database creation
 
-## purchases テーブル
+* Database initialization
 
-| Column            | Type       | Options                         |
-| ----------------- | ---------- | ------------------------------- |
-| credit_card_number| string     | null: false                     |
-| credit_card_images| text       | null: false                     |
-| credit_card_date  | string     | null: false                     |
-| credit_card_code  | string     | null: false                     |
-| postcode          | integer    | null: false                     |  
-| prefecture_id     | integer    | null: false                     |
-| city              | integer    | null: false                     |
-| block             | integer    | null: false                     |
-| building          | integer    | null: false                     |
-| phone_number      | integer    | null: false                     |
-| images	          | text       | null: false                     |
-| price             | string     | null: false                     |
-| products_name     | string     | null: false                     |
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
