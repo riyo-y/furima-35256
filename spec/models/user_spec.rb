@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
 
 
-    #できる事
+    context '新規登録できるとき' do
 
     it'パスワードは６文字以上であれば登録できること'do
     @user.password = '123456'
@@ -22,11 +22,12 @@ RSpec.describe User, type: :model do
   @user.password = '1q1q1q'
       @user.password_confirmation = '1q1q1q'
      expect(@user).to be_valid
+  end
 end
 
 
 
-#できない事
+  context '新規登録できないとき' do
 
      it 'ニックネームがないと登録できない事'do
      @user.nickname = ''
@@ -127,23 +128,24 @@ end
 
 it'ユーザー名字のフリガナは、全角（カタカナ）での入力がないと登録できない事'do
 end
-@user.last_name_kana = ''
-@user.valid?
-expect(@user.errors.full_messages).to include("Last_name_kana can't be blank")
+     @user.last_name_kana = ''
+     @user.valid?
+    expect(@user.errors.full_messages).to include("Last_name_kana can't be blank")
 end
 
 
-it'ユーザー名前のフリガナは、全角（カタカナ）での入力がないと登録できない事'
-@user.first_name_kana = ''
-@user.valid?
-expect(@user.errors.full_messages).to include("First_name_kana can't be blank")
+it'ユーザー名前のフリガナは、全角（カタカナ）での入力がないと登録できない事'do
+     @user.first_name_kana = ''
+     @user.valid?
+     expect(@user.errors.full_messages).to include("First_name_kana can't be blank")
 end
 
 it'生年月日がないと登録できない事'do
-@user.birthdaay = ''
+      @user.birthday = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
 end
 
   end
+ end
 end
