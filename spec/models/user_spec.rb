@@ -7,13 +7,12 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
-      it 'パスワードは６文字以上であれば登録できること' do
-        @user.password = '123456'
-        @user.password_confirmation = '123456'
-        expect(@user).to be_valid
-      end
 
-      it 'パスワードは半角英数字が混合されていれば登録できること' do
+      it '全ての値が正しければ登録できること'do
+      expect(@user).to be_valid
+    end
+
+      it 'パスワードは半角英数字が混合されてれば登録できること' do
         @user.password = '1q1q1q'
         @user.password_confirmation = '1q1q1q'
         expect(@user).to be_valid
