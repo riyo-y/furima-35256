@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :shipping
   belongs_to :Admins_information
   belongs_to :arrival_date
+  has_one_attached :image
 
   #validates :category, :products_states, :shipping, :admins_information, :presence : true
   
