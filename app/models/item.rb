@@ -3,19 +3,11 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :products_states
   belongs_to :shipping
-  belongs_to :Admins_infomation
+  belongs_to :Admins_information
   belongs_to :arrival_date
 
-  validates :category, : true
-  validates :products_states, : true
-  validates :shipping, : true
-  validates :Admins_infomation, : true
-  validates :presence , : true
+  #validates :category, :products_states, :shipping, :admins_information, :presence : true
   
-  validates :category_id,
-  validates :products_states_id,
-  validates :shipping_id,
-  validates :Admins_infomation_id,
-  validates :arrival_date_id,numericality: { other_than: 1 } 
+  validates :category_id, :products_states_id, :shipping_id, :admins_information_id, :arrival_date_id, numericality: { other_than: 1 } 
  
-end
+end 
