@@ -1,24 +1,87 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  before do
   @item = FactoryBot.build(:item)
 end
 
 describe '商品出品機能' do
-ログイン状態のユーザーのみ、商品出品ページへ遷移できること
-ログアウト状態のユーザーは、商品出品ページへ遷移しようとすると、ログインページへ遷移すること
-商品画像を1枚つけることが必須であること
-商品名が必須であること
-商品の説明が必須であること
-カテゴリーの情報が必須であること
-商品の状態についての情報が必須であること
-配送料の負担についての情報が必須であること
-発送元の地域についての情報が必須であること
-発送までの日数についての情報が必須であること
-販売価格についての情報が必須であること
-販売価格は、¥300~¥9,999,999の間のみ保存可能であること
-販売価格は半角数字のみ保存可能であること
-入力された販売価格によって、販売手数料や販売利益の表示が変わること
-必要な情報を適切に入力すると、商品情報がデータベースに保存されること
-エラーハンドリングができていること（入力に問題がある状態で「出品する」ボタンが押された場合、情報は保存されず、出品ページに戻りエラーメッセージが表示されること）
-エラーハンドリングの際、1つのエラーに対して同じエラーメッセージが重複して表示されないこと
+  context '商品出品できるとき' do
+
+it '全ての値が正しければ登録できること'do
+      expect(@item.valid?).to eq true
+    end
+  end
+
+    
+  context '商品出品できないとき' do
+
+it'商品画像を1枚つけないと投稿できない'do
+   @item.image = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Price must be an integer")
+end
+
+it'商品名がないと投稿できない'do
+   @item.products_name = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Products name can't be blank")
+end
+
+it'商品の説明がないと投稿できない'do
+   @item.comments = '' 
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Comments can't be blank")
+end
+
+it'カテゴリーの情報がないと登録できない'do
+   @item.category_id = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include( 'Price must be an integer", "Category is not a number')
+end
+
+it'商品の状態についての情報がないと登録できない'do
+   @item.products_states_id = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Products states must be other than 1
+    ")
+end
+
+it'配送料の負担についての情報がないと登録できない'do
+   @item.shipping_id = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Shipping is not a number")
+end
+
+it'発送元の地域についての情報が必須がないと登録できない'do
+   @item.admins_information_id = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Admins information is not a number")
+end
+
+it'発送までの日数についての情報が必須がないと登録できない'do
+   @item.arrival_date_id = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Arrival date is not a number")
+end
+
+it'販売価格についての情報がないと登録できない'do
+   @item.price = ''
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
+end
+
+it'販売価格は、¥300~¥9,999,999の間のみでないと保存できない'do
+  @item.price = '10000000'
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+end
+
+it'販売価格は半角数字のみでしか保存できない'do
+   @item.price = '１１１１１'
+   @item.valid?
+   expect(@item.errors.full_messages).to include("Price is not a number")
+  end
+ end
+end
+end
