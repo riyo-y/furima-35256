@@ -36,6 +36,12 @@ has_many :orders
 
  belongs_to :user
  has_one :order
+ belongs_to :category
+ belongs_to :products_states
+ belongs_to :shipping
+ belongs_to :Admins_information
+ belongs_to :arrival_date
+ has_one_attached :image
 
 
 
