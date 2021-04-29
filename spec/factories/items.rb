@@ -4,7 +4,7 @@ FactoryBot.define do
     japanese_user = Gimei.name
 
     products_name             { Faker::Lorem.sentence }
-    price                     { Faker::Commerce.price(range: 300..50_000,as_string: true) }
+    price                     { 1000 }
     category_id               { Faker::Number.between(from: 2, to: 11) }
     products_states_id        { Faker::Number.between(from: 2, to: 7) }
     shipping_id               { Faker::Number.between(from: 2, to: 3) }
