@@ -37,26 +37,25 @@ end
 it'カテゴリーの情報がないと登録できない'do
    @item.category_id = ''
    @item.valid?
-   expect(@item.errors.full_messages).to include( 'Price must be an integer", "Category is not a number')
+   expect(@item.errors.full_messages).to include( "Price must be an integer", "Category is not a number")
 end
 
 it 'カテゴリーの情報が1では登録できない'do
    @item.category_id = '1'
    @item.valid?
-   expect(@item.errors.full_messages).to include('')
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Category must be other than 1")
 end
 
 it'商品の状態についての情報がないと登録できない'do
    @item.products_states_id = ''
    @item.valid?
-   expect(@item.errors.full_messages).to include("Products states must be other than 1
-    ")
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Products states is not a number")
 end
 
 it '商品の状態についての情報が1では登録できない'do
    @item.category_id = '1'
    @item.valid?
-   expect(@item.errors.full_messages).to include('')
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Category must be other than 1")
 end
 
 it'配送料の負担についての情報がないと登録できない'do
@@ -68,7 +67,7 @@ end
 it '配送料の負担についての情報が1では登録できない'do
    @item.category_id = '1'
    @item.valid?
-   expect(@item.errors.full_messages).to include('')
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Category must be other than 1")
 end
 
 it'発送元の地域についての情報が必須がないと登録できない'do
@@ -80,7 +79,7 @@ end
 it '発送元の地域についての情報が1では登録できない'do
    @item.category_id = '1'
    @item.valid?
-   expect(@item.errors.full_messages).to include('')
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Category must be other than 1")
 end
 
 
@@ -93,7 +92,7 @@ end
 it '発送までの日数についての情報が1では登録できない'do
    @item.category_id = '1'
    @item.valid?
-   expect(@item.errors.full_messages).to include('')
+   expect(@item.errors.full_messages).to include("Price must be an integer", "Category must be other than 1")
 end
 
 it'販売価格についての情報がないと登録できない'do
@@ -111,7 +110,7 @@ end
 it  '299円以下では登録できないこと' do
    @item.price = '299'
    @item.valid?
-   expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+   expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
 end
 
 it'販売価格は半角数字のみでしか保存できない'do
