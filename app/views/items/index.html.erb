@@ -128,7 +128,6 @@
      <% if @items.present? %>
      <% @items.length.times do |e| %>
       <li class='list'>
-        <%# <% @items.each_with_index do |i,e| %>
          
             <%= link_to item_path(@items[e].id)do %>
             <div class='item-img-content'>
