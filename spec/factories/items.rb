@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    
     japanese_user = Gimei.name
 
     products_name             { Faker::Lorem.sentence }
@@ -11,7 +10,6 @@ FactoryBot.define do
     admins_information_id     { Faker::Number.between(from: 2, to: 30) }
     arrival_date_id           { Faker::Number.between(from: 2, to: 4) }
     comments                  { Faker::Lorem.sentence }
-    
 
     association :user
     after(:build) do |item|

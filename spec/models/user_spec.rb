@@ -7,10 +7,9 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
-
-      it '全ての値が正しければ登録できること'do
-      expect(@user).to be_valid
-    end
+      it '全ての値が正しければ登録できること' do
+        expect(@user).to be_valid
+      end
 
       it 'パスワードは半角英数字が混合されてれば登録できること' do
         @user.password = '1q1q1q'
@@ -62,7 +61,7 @@ RSpec.describe User, type: :model do
         @user.password = '111111'
         @user.password_confirmation = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid', 'Password confirmation is invalid')
       end
 
       it 'パスワードは、確認用を含めて2回入力しないと登録できない事' do
