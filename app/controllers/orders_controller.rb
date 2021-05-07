@@ -46,9 +46,6 @@ private
       if @items.user == current_user
         redirect_to root_path
       end
-     else
-      redirect_to root_path
-    end
   end    
 end
 

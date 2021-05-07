@@ -42,7 +42,7 @@ RSpec.describe OrderPurchase, type: :model do
     end
   
     it "都道府県がないと登録できない" do
-      @order_purchase.admins_information_id = '1'
+      @order_purchase.admins_information_id = 1
       expect(@order_purchase.errors.full_messages).to include()
     end
   
