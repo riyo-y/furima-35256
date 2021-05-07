@@ -8,6 +8,7 @@ class OrderPurchase
     validates :admins_information_id, numericality: { other_than: 1 }
     validates :city
     validates :block
+    validates :building
     validates :phone_number, length: { maximum: 11 }, numericality: true
     validates :user_id
     validates :item_id

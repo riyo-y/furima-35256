@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only:[:create, :index]
-  before_action :set_item, only: [:index,:create]
-  before_action :set_conditions, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :set_item
+  before_action :set_conditions
 
   def index
     @order_purchase = OrderPurchase.new
@@ -46,6 +46,9 @@ private
       if @items.user == current_user
         redirect_to root_path
       end
+    else
+      render 'index'
   end    
+ end
 end
 

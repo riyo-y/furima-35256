@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
+
   end
 
   def new
@@ -21,6 +22,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    if @items.order.present? 
+      redirect_to root_path
+   end    
   end
 
   def edit
