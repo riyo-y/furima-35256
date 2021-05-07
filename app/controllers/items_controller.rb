@@ -21,13 +21,15 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+  def show 
     if @items.order.present? 
       redirect_to root_path
    end    
   end
 
+
   def edit
+    
   end
 
   def update
