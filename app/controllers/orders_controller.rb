@@ -38,15 +38,15 @@ private
   end
   
   def set_item
-    @items = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
   end
 
 
   def set_conditions
-      if @items.order.present? && @items.user == current_user
+      if @items.order.present? || @items.user == current_user
         redirect_to root_path
     else
-        redirect_to root_path
+        render :index
   end    
  end
 end

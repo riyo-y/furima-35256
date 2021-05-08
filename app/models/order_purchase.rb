@@ -8,12 +8,11 @@ class OrderPurchase
     validates :admins_information_id, numericality: { other_than: 1 }
     validates :city
     validates :block
-    validates :phone_number, length: { maximum: 11 }, numericality: true
+    validates :phone_number, length: { maximum: 11 }, numericality: { only_integer: true }
     validates :user_id
     validates :item_id
     validates :token
   end
-  
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
