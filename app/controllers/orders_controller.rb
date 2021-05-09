@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
      pay_item
       @order_purchase.save
       redirect_to root_path
-   end 
   else
     redirect_to root_path
    end
@@ -43,7 +42,7 @@ private
 
 
   def set_conditions
-      if @items.order.present? || @items.user == current_user
+      if @item.order.present? || @item.user == current_user
         redirect_to root_path
     else
         render :index

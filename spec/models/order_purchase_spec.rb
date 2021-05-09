@@ -72,6 +72,18 @@ RSpec.describe OrderPurchase, type: :model do
       expect(@order_purchase.errors.full_messages).to include('Phone number is not a number')
     end
 
+    it '電話番号が数字のみでないと登録できないこと' do
+      @order_purchase.phone_number = 'aaa-123456'
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include('Phone number is not a number')
+    end
+
+    it '全角数字だと登録できないこと' do
+      @order_purchase.phone_number = '１２３４５６７８９９'
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include('Phone number is not a number')
+    end
+
     it 'user_idがないと登録できない' do
       @order_purchase.user_id = ''
       @order_purchase.valid?

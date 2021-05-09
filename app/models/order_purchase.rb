@@ -8,7 +8,7 @@ class OrderPurchase
     validates :admins_information_id, numericality: { other_than: 1 }
     validates :city
     validates :block
-    validates :phone_number, length: { maximum: 11 }, numericality: { only_integer: true }
+    validates :phone_number, length: { maximum: 11 }, numericality: { ^0[789]0-\d{4}-\d{4}$ }
     validates :user_id
     validates :item_id
     validates :token
