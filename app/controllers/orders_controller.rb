@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
       @order_purchase.save
       redirect_to root_path
   else
-    redirect_to root_path
+    render :new
    end
   end
 
@@ -44,8 +44,6 @@ private
   def set_conditions
       if @item.order.present? || @item.user == current_user
         redirect_to root_path
-    else
-        render :index
   end    
  end
 end
