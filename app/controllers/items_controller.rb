@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_item, only: [:show, :edit, :update,:destroy]
-  before_action :user_item, only: [:edit, :update,:destroy]
-
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :user_item, only: [:edit, :update, :destroy]
+  before_action :security_item, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -21,29 +21,23 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show 
+  def show
   end
 
-
-def edit   
-end
-
-
-def update
-  if @items.update(item_params)
-    render :show
-  else
-    render :edit
+  def edit
   end
-end
 
-def destroy
-  if @items.destroy
-    redirect_to root_path
+  def update
+    if @items.update(item_params)
+      render :show
+    else
+      render :edit
+    end
   end
-end
 
-
+  def destroy
+    redirect_to root_path if @items.destroy
+  end
 
   private
 
@@ -52,14 +46,15 @@ end
                                  :arrival_date_id, :comments, :image).merge(user_id: current_user.id)
   end
 
-
   def set_item
     @items = Item.find(params[:id])
   end
 
   def user_item
-    if current_user != @items.user
-      redirect_to root_path 
+    redirect_to root_path if current_user != @items.user
   end
- end
+
+  def security_item
+    redirect_to root_path if @items.order.present?
+  end
 end
